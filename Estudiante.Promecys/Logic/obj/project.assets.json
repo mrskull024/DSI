@@ -850,19 +850,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\julio.martinez\\.nuget\\packages\\": {}
+    "C:\\Users\\mrsku\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Logic\\Logic.csproj",
+      "projectUniqueName": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Logic\\Logic.csproj",
       "projectName": "Logic",
-      "projectPath": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Logic\\Logic.csproj",
-      "packagesPath": "C:\\Users\\julio.martinez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Logic\\obj\\",
+      "projectPath": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Logic\\Logic.csproj",
+      "packagesPath": "C:\\Users\\mrsku\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Logic\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\julio.martinez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mrsku\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -876,11 +876,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Datos\\Datos.csproj": {
-              "projectPath": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Datos\\Datos.csproj"
+            "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Datos\\Datos.csproj": {
+              "projectPath": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Datos\\Datos.csproj"
             },
-            "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Modelos\\Modelos.csproj": {
-              "projectPath": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Modelos\\Modelos.csproj"
+            "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Modelos\\Modelos.csproj": {
+              "projectPath": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Modelos\\Modelos.csproj"
             }
           }
         }

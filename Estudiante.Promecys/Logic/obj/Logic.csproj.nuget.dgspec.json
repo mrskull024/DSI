@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Logic\\Logic.csproj": {}
+    "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Logic\\Logic.csproj": {}
   },
   "projects": {
-    "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Datos\\Datos.csproj": {
+    "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Datos\\Datos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Datos\\Datos.csproj",
+        "projectUniqueName": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Datos\\Datos.csproj",
         "projectName": "Datos",
-        "projectPath": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Datos\\Datos.csproj",
-        "packagesPath": "C:\\Users\\julio.martinez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Datos\\obj\\",
+        "projectPath": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Datos\\Datos.csproj",
+        "packagesPath": "C:\\Users\\mrsku\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Datos\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\julio.martinez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mrsku\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Modelos\\Modelos.csproj": {
-                "projectPath": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Modelos\\Modelos.csproj"
+              "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Modelos\\Modelos.csproj": {
+                "projectPath": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Modelos\\Modelos.csproj"
               }
             }
           }
@@ -73,17 +73,17 @@
         }
       }
     },
-    "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Logic\\Logic.csproj": {
+    "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Logic\\Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Logic\\Logic.csproj",
+        "projectUniqueName": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Logic\\Logic.csproj",
         "projectName": "Logic",
-        "projectPath": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Logic\\Logic.csproj",
-        "packagesPath": "C:\\Users\\julio.martinez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Logic\\obj\\",
+        "projectPath": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Logic\\Logic.csproj",
+        "packagesPath": "C:\\Users\\mrsku\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Logic\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\julio.martinez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mrsku\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -97,11 +97,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Datos\\Datos.csproj": {
-                "projectPath": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Datos\\Datos.csproj"
+              "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Datos\\Datos.csproj": {
+                "projectPath": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Datos\\Datos.csproj"
               },
-              "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Modelos\\Modelos.csproj": {
-                "projectPath": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Modelos\\Modelos.csproj"
+              "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Modelos\\Modelos.csproj": {
+                "projectPath": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Modelos\\Modelos.csproj"
               }
             }
           }
@@ -141,17 +141,17 @@
         }
       }
     },
-    "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Modelos\\Modelos.csproj": {
+    "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Modelos\\Modelos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Modelos\\Modelos.csproj",
+        "projectUniqueName": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Modelos\\Modelos.csproj",
         "projectName": "Modelos",
-        "projectPath": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Modelos\\Modelos.csproj",
-        "packagesPath": "C:\\Users\\julio.martinez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Modelos\\obj\\",
+        "projectPath": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Modelos\\Modelos.csproj",
+        "packagesPath": "C:\\Users\\mrsku\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Modelos\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\julio.martinez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mrsku\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
