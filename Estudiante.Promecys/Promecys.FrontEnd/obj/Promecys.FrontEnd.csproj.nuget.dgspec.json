@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Promecys.FrontEnd\\Promecys.FrontEnd.csproj": {}
+    "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Promecys.FrontEnd\\Promecys.FrontEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Promecys.FrontEnd\\Promecys.FrontEnd.csproj": {
+    "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Promecys.FrontEnd\\Promecys.FrontEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Promecys.FrontEnd\\Promecys.FrontEnd.csproj",
+        "projectUniqueName": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Promecys.FrontEnd\\Promecys.FrontEnd.csproj",
         "projectName": "Promecys.FrontEnd",
-        "projectPath": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Promecys.FrontEnd\\Promecys.FrontEnd.csproj",
-        "packagesPath": "C:\\Users\\julio.martinez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\julio.martinez\\Desktop\\DSI\\Estudiante.Promecys\\Promecys.FrontEnd\\obj\\",
+        "projectPath": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Promecys.FrontEnd\\Promecys.FrontEnd.csproj",
+        "packagesPath": "C:\\Users\\mrsku\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mrsku\\OneDrive\\Documentos\\GitHub\\DSI\\Estudiante.Promecys\\Promecys.FrontEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\julio.martinez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mrsku\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

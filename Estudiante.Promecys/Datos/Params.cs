@@ -22,6 +22,9 @@
 
         #region SP_Horarios
         public string spHorariosList => "[DSI].[uspListarHorarios]";
+        public string spUpdateHorarios => "[DSI].[uspUpdateHorarios]";
+        public string spCreateHorarios => "[DSI].[uspCreateHorarios]";
+        public string spGetHorarios => "[DSI].[uspGetHorarios]";
         #endregion
 
         #region SP_Matricula

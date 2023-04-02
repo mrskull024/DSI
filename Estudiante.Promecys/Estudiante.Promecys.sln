@@ -9,10 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modelos", "Modelos\Modelos.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Datos", "Datos\Datos.csproj", "{258CA68C-CDD4-485F-B0B2-E8FC28833A2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Promecys.FrontEnd", "Promecys.FrontEnd\Promecys.FrontEnd.csproj", "{BE0BAD75-B24D-47E5-90C3-8AB4420EA6F7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{A71DED09-058F-449F-B676-1CAC69F58B03}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,14 +27,6 @@ Global
 		{258CA68C-CDD4-485F-B0B2-E8FC28833A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{258CA68C-CDD4-485F-B0B2-E8FC28833A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{258CA68C-CDD4-485F-B0B2-E8FC28833A2C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BE0BAD75-B24D-47E5-90C3-8AB4420EA6F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BE0BAD75-B24D-47E5-90C3-8AB4420EA6F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BE0BAD75-B24D-47E5-90C3-8AB4420EA6F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BE0BAD75-B24D-47E5-90C3-8AB4420EA6F7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A71DED09-058F-449F-B676-1CAC69F58B03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A71DED09-058F-449F-B676-1CAC69F58B03}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A71DED09-058F-449F-B676-1CAC69F58B03}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A71DED09-058F-449F-B676-1CAC69F58B03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
