@@ -17,10 +17,14 @@ namespace Promecys.API.Controllers
         }
 
         //Validar este metodo que aun no esta funcional
-        [HttpGet]
-        public Horarios ObtenerHorario([FromBody] HorariosGet_Req param)
+        [HttpGet("GetHorarioById/{id}")]
+        public Horarios ObtenerHorario(int id)
         {
             var data = new Horarios();
+            var param = new HorariosGet_Req
+            {
+                id = id
+            };
             var method = new Datos.HorariosDataAccess.Execute();
 
             try
@@ -42,7 +46,7 @@ namespace Promecys.API.Controllers
             return data;
         }
 
-        [HttpPost]
+        [HttpPost("ListHorarios")]
         public List<Horarios> ListHorarios([FromBody] HorariosList_Req param)
         {
             var data = new List<Horarios>();
@@ -58,7 +62,7 @@ namespace Promecys.API.Controllers
             return data;
         }
 
-        [HttpPost]
+        [HttpPost("CreateHorario")]
         public Horarios CreateHorario([FromBody] Horarios_Req param)
         {
             var data = new Horarios();
@@ -81,7 +85,7 @@ namespace Promecys.API.Controllers
             return data;
         }
 
-        [HttpPut]
+        [HttpPut("UpdateHorario")]
         public Horarios UpdateHorario([FromBody] Horarios_Req param)
         {
             var data = new Horarios();
