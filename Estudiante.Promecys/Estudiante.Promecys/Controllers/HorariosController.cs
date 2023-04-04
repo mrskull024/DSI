@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Modelos.Horarios;
 using Modelos.Horarios_Req;
+using System.Text.Json;
 
 namespace Promecys.API.Controllers
 {
@@ -47,19 +48,23 @@ namespace Promecys.API.Controllers
         }
 
         [HttpPost("ListHorarios")]
-        public List<Horarios> ListHorarios([FromBody] HorariosList_Req param)
+        public IActionResult ListHorarios([FromBody] HorariosList_Req param)
         {
             var data = new List<Horarios>();
-            var method = new Datos.HorariosDataAccess.Execute();
 
-            data = method.HorariosList(_cn, param);
-
-            if (data != null)
+            if (ModelState.IsValid)
             {
-                return data;
-            }
+                var method = new Datos.HorariosDataAccess.Execute();
 
-            return data;
+                data = method.HorariosList(_cn, param);
+
+                if (data != null)
+                {
+                    return Ok(data);
+                }
+            }
+          
+            return BadRequest(ModelState);
         }
 
         [HttpPost("CreateHorario")]
