@@ -12,7 +12,7 @@ namespace Datos.MatriculaDataAccess
         {
             using (var sqlConn = new SqlConnection(cn))
             {
-                var query = sqlConn.Query<Matricula>(Params.instance.spEstudianteGet,
+                var query = sqlConn.Query<Matricula>(Params.instance.spMatriculaGet,
                     new
                     {
                         param.id
@@ -26,7 +26,7 @@ namespace Datos.MatriculaDataAccess
         {
             using (var sqlConn = new SqlConnection(cn))
             {
-                var query = sqlConn.Query<Matricula>(Params.instance.spEstudianteGet,
+                var query = sqlConn.Query<Matricula>(Params.instance.spMatriculaGet,
                     new
                     {
                         param.id,
@@ -47,7 +47,7 @@ namespace Datos.MatriculaDataAccess
         {
             using (var sqlConn = new SqlConnection(cn))
             {
-                var query = sqlConn.Query<Matricula>(Params.instance.spEstudianteGet,
+                var query = sqlConn.Query<Matricula>(Params.instance.spMatriculaGet,
                     new
                     {
                         param.id,
