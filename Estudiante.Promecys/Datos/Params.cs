@@ -34,7 +34,10 @@
         #endregion
 
         #region SP_Estudiante
-        public string spEstudianteGet => "[dbo].[uspObtenerMatricula]";
+        public string spEstudianteList => "[DSI].[uspListarEstudiantes]";
+        public string spUpdateEstudiante => "[DSI].[UpdateEstudiante]";
+        public string spCreateEstudiante => "[DSI].[CreateEstudiante]";
+        public string spGetEstudiante => "[dbo].[uspGetEstudiante]";
         #endregion
 
         #region SP_Login

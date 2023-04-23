@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Modelos.Horarios;
 using Modelos.Horarios_Req;
-using System.Text.Json;
 
 namespace Promecys.API.Controllers
 {
@@ -17,40 +16,33 @@ namespace Promecys.API.Controllers
             _cn = _configuration.GetConnectionString("DefaultConnection").ToString();
         }
 
-        //Validar este metodo que aun no esta funcional
-        [HttpGet("GetHorarioById/{id}")]
-        public Horarios ObtenerHorario(int id)
+        [HttpGet("GetHorario/{id}")]
+        public IActionResult ObtenerHorario(int id)
         {
-            var data = new Horarios();
+            Horarios data = new();
             var param = new HorariosGet_Req
             {
                 id = id
             };
-            var method = new Datos.HorariosDataAccess.Execute();
 
-            try
+            if(ModelState.IsValid)
             {
+                var method = new Datos.HorariosDataAccess.Execute();
                 data = method.GetHorarios(_cn, param);
 
                 if (data != null)
                 {
-                    return data;
+                    return Ok(data);
                 }
             }
-            catch (Exception ex)
-            {
-                string msg = ex.Message;
-            }
 
-
-
-            return data;
+            return NotFound("El registro con el id especificado no existe");
         }
 
         [HttpPost("ListHorarios")]
         public IActionResult ListHorarios([FromBody] HorariosList_Req param)
         {
-            var data = new List<Horarios>();
+            List<Horarios> data = new();
 
             if (ModelState.IsValid)
             {
@@ -68,49 +60,40 @@ namespace Promecys.API.Controllers
         }
 
         [HttpPost("CreateHorario")]
-        public Horarios CreateHorario([FromBody] Horarios_Req param)
+        public IActionResult CreateHorario([FromBody] Horarios_Req param)
         {
-            var data = new Horarios();
-            var method = new Datos.HorariosDataAccess.Execute();
-
-            try
+            Horarios data = new();
+            
+            if(ModelState.IsValid)
             {
+                var method = new Datos.HorariosDataAccess.Execute();
                 data = method.CreateHorarios(_cn, param);
 
                 if (data != null)
                 {
-                    return data;
+                    return Ok(data);
                 }
             }
-            catch (Exception ex)
-            {
-                string msg = ex.Message;
-            }
 
-            return data;
+            return BadRequest(ModelState);
         }
 
         [HttpPut("UpdateHorario")]
-        public Horarios UpdateHorario([FromBody] Horarios_Req param)
+        public IActionResult UpdateHorario([FromBody] Horarios_Req param)
         {
             var data = new Horarios();
-            var method = new Datos.HorariosDataAccess.Execute();
-
-            try
+            if (ModelState.IsValid)
             {
+                var method = new Datos.HorariosDataAccess.Execute();
                 data = method.UpdateHorarios(_cn, param);
 
                 if (data != null)
                 {
-                    return data;
+                    return Ok(data);
                 }
             }
-            catch (Exception ex)
-            {
-                string msg = ex.Message;
-            }
 
-            return data;
+            return BadRequest(ModelState);
         }
     }
 }
