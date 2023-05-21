@@ -12,12 +12,9 @@
         #endregion
 
         //Sp's
-        #region SP_Estado_Civil
-        public string spEstadosCivilesList => "[dbo].[uspListarEstadosCiviles]";
-        #endregion
-
         #region SP_Asignaturas
-        public string spAsignaturasList => "[dbo].[uspListarAsignaturas]";
+        public string spAsignaturasList => "[DSI].[uspListarAsignaturas]";
+        public string spAsignaturasPorEstudiante => "[DSI].[UspListarAsignaturasPorEstudiante]";
         #endregion
 
         #region SP_Horarios
@@ -37,13 +34,13 @@
         public string spEstudianteList => "[DSI].[uspListarEstudiantes]";
         public string spUpdateEstudiante => "[DSI].[UpdateEstudiante]";
         public string spCreateEstudiante => "[DSI].[CreateEstudiante]";
-        public string spGetEstudiante => "[dbo].[uspGetEstudiante]";
+        public string spGetEstudiante => "[DSI].[uspGetEstudiante]";
         #endregion
 
-        #region SP_Login
-        public string spLoginSave => "[dbo].[uspRegistarLogin]";
-        public string spLoginUpdate => "[dbo].[uspActualizarLogin]";
-        public string spLoginGet => "[dbo].[uspObtenerLogin]";
+        #region SP_Catalogos
+        public string spEstadoCivilList => "[DSI].[uspListarEstadoCivil]";
+        public string spDepartamentosList => "[DSI].[uspListarDepartamentos]";
+        public string spMunicipiosList => "[DSI].[uspListarMunicipios]";
         #endregion
     }
 }
