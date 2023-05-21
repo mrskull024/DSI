@@ -2,6 +2,6 @@
 {
     public class EstadoCivilList_Req
     {
-        public bool incluirInactivos {  get; set; }
+        public bool incluirDesactivados {  get; set; }
     }
 }
