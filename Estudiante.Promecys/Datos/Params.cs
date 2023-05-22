@@ -24,10 +24,8 @@
         public string spGetHorarios => "[DSI].[uspGetHorarios]";
         #endregion
 
-        #region SP_Matricula
-        public string spMatriculaSave => "[dbo].[uspRegistarMatricula]";
-        public string spMatriculaUpdate => "[dbo].[uspActualizarMatricula]";
-        public string spMatriculaGet => "[dbo].[uspObtenerMatricula]";
+        #region SP_Pagos
+        public string spObtenerPagosPorEstudiante => "[DSI].[usp_ObtenerPagosPorEstudiante]";
         #endregion
 
         #region SP_Estudiante
@@ -41,6 +39,10 @@
         public string spEstadoCivilList => "[DSI].[uspListarEstadoCivil]";
         public string spDepartamentosList => "[DSI].[uspListarDepartamentos]";
         public string spMunicipiosList => "[DSI].[uspListarMunicipios]";
+        public string spEstadoLaboralList => "[DSI].[usp_ListarEstadoLaboral]";
+        public string spGenerosList => "[DSI].[usp_ListarGeneros]";
+        public string spTipoEstudianteList => "[DSI].[usp_ListarTipoEstudiante]";
+        public string spEscuelasList => "[DSI].[usp_ListarEscuelas]";
         #endregion
     }
 }

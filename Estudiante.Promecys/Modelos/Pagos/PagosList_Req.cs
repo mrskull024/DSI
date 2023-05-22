@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Modelos.Catalogos
+namespace Modelos.Pagos
 {
-    public class MunicipiosList_Req
+    public class PagosList_Req
     {
         [Required(ErrorMessage = "{0} es requerido")]
-        public bool incluirDesactivados {  get; set; }
+        public string numeroCarnet { get; set; }
     }
 }

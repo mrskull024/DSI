@@ -2,7 +2,7 @@
 
 namespace Modelos.Catalogos
 {
-    public class DepartamentosList_Req
+    public class EstadoLaboralList_Req
     {
         [Required(ErrorMessage = "{0} es requerido")]
         public bool incluirDesactivados {  get; set; }

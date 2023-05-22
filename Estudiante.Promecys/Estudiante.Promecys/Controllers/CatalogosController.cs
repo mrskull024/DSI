@@ -76,5 +76,85 @@ namespace Promecys.API.Controllers
 
             return BadRequest(ModelState);
         }
+
+        [HttpPost("ListarEstadoLaboral")]
+        public IActionResult ListEstadoLaboral([FromBody] EstadoLaboralList_Req param)
+        {
+            List<EstadoLaboral> data = new();
+
+            if (ModelState.IsValid)
+            {
+                var method = new Datos.CatalogosDataAccess.Execute();
+
+                data = method.EstadoLaboralList(_cn, param);
+
+                if (data != null)
+                {
+                    return Ok(data);
+                }
+            }
+
+            return BadRequest(ModelState);
+        }
+
+        [HttpPost("ListarGeneros")]
+        public IActionResult ListGeneros([FromBody] GenerosList_Req param)
+        {
+            List<Generos> data = new();
+
+            if (ModelState.IsValid)
+            {
+                var method = new Datos.CatalogosDataAccess.Execute();
+
+                data = method.GenerosList(_cn, param);
+
+                if (data != null)
+                {
+                    return Ok(data);
+                }
+            }
+
+            return BadRequest(ModelState);
+        }
+
+        [HttpPost("ListarTipoEstudiante")]
+        public IActionResult ListTipoEstudiante([FromBody] TipoEstudianteList_Req param)
+        {
+            List<TipoEstudiante> data = new();
+
+            if (ModelState.IsValid)
+            {
+                var method = new Datos.CatalogosDataAccess.Execute();
+
+                data = method.TipoEstudianteList(_cn, param);
+
+                if (data != null)
+                {
+                    return Ok(data);
+                }
+            }
+
+            return BadRequest(ModelState);
+        }
+
+        [HttpPost("ListarEscuelas")]
+        public IActionResult ListEscuelas([FromBody] EscuelasList_Req param)
+        {
+            List<Escuelas> data = new();
+
+            if (ModelState.IsValid)
+            {
+                var method = new Datos.CatalogosDataAccess.Execute();
+
+                data = method.EscuelasList(_cn, param);
+
+                if (data != null)
+                {
+                    return Ok(data);
+                }
+            }
+
+            return BadRequest(ModelState);
+        }
     }
 }

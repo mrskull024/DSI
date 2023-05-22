@@ -49,6 +49,62 @@ namespace Datos.CatalogosDataAccess
             }
         }
 
+        public List<EstadoLaboral> EstadoLaboralList(string cn, EstadoLaboralList_Req param)
+        {
+            using (var sqlConn = new SqlConnection(cn))
+            {
+                var query = sqlConn.Query<EstadoLaboral>(Params.instance.spEstadoLaboralList,
+                    new
+                    {
+                        param.incluirDesactivados
+                    },
+                    null, true, null, CommandType.StoredProcedure);
+                return query.ToList();
+            }
+        }
+
+        public List<Generos> GenerosList(string cn, GenerosList_Req param)
+        {
+            using (var sqlConn = new SqlConnection(cn))
+            {
+                var query = sqlConn.Query<Generos>(Params.instance.spGenerosList,
+                    new
+                    {
+                        param.incluirDesactivados
+                    },
+                    null, true, null, CommandType.StoredProcedure);
+                return query.ToList();
+            }
+        }
+
+        public List<TipoEstudiante> TipoEstudianteList(string cn, TipoEstudianteList_Req param)
+        {
+            using (var sqlConn = new SqlConnection(cn))
+            {
+                var query = sqlConn.Query<TipoEstudiante>(Params.instance.spTipoEstudianteList,
+                    new
+                    {
+                        param.incluirDesactivados
+                    },
+                    null, true, null, CommandType.StoredProcedure);
+                return query.ToList();
+            }
+        }
+
+        public List<Escuelas> EscuelasList(string cn, EscuelasList_Req param)
+        {
+            using (var sqlConn = new SqlConnection(cn))
+            {
+                var query = sqlConn.Query<Escuelas>(Params.instance.spEscuelasList,
+                    new
+                    {
+                        param.incluirDesactivados
+                    },
+                    null, true, null, CommandType.StoredProcedure);
+                return query.ToList();
+            }
+        }
+
         public void Dispose()
         {
 
