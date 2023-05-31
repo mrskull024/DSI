@@ -1,5 +1,6 @@
 ﻿using DSI_BLL.Interfaces.Horarios;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Storage;
 using Modelos.Horarios;
 
 namespace Promecys.API.Controllers
@@ -88,6 +89,7 @@ namespace Promecys.API.Controllers
         {
             if (ModelState.IsValid)
             {
+                //return Ok(_horarios.ActualizarHorario(param));
                 var method = _horarios.ActualizarHorario(param);
 
                 if (method != null)

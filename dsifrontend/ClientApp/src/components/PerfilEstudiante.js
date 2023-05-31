@@ -7,6 +7,8 @@ import { show_alert } from '../functions';
 const PerfilEstudiante = () => {
     //necesario para el api
     const urlHorarios = "http://macadmin-001-site1.gtempurl.com/api/Horarios/ListHorarios";
+    const urlCreateHorario = "http://macadmin-001-site1.gtempurl.com/api/Horarios/CreateHorario";
+    const urlPutHorario = "http://macadmin-001-site1.gtempurl.com/api/Horarios/UpdateHorario";
     const headers = { 'Content-Type': 'application/json' };
     const request = { incluirInactivos: true };
 
@@ -38,9 +40,12 @@ const PerfilEstudiante = () => {
         setOperation(opcion);
 
         if (opcion === 1) {
+            //console.info('Legue a opcion1');
             setTitle('Agregar Horario');
+
         }
         else if (opcion === 2) {
+            //console.info('Legue a opcion2', 'params:', id, nombre, horaInicio, horaFin, estado);
             setTitle('Editar Horario');
             setId(id);
             setNombre(nombre);
@@ -54,13 +59,81 @@ const PerfilEstudiante = () => {
         }, 500);
     }
 
+    const validarForm = () => {
+        let parameter;
+        let method;
+        let operation;
+
+        if (nombre.trim() === '') {
+            show_alert('Digital el nombre del horario', 'warning');
+        }
+        else if (horaInicio.trim() === '') {
+            show_alert('Digital la hora de inicio del horario', 'warning');
+        }
+        else if (horaFin.trim() === '') {
+            show_alert('Digital la hora de finalizacion del horario', 'warning');
+        }
+        else {
+            if (operation === 1) {
+                parameter = { nombre: nombre.trim(), horaInicio: horaInicio.trim(), horaFin: horaFin.trim(), estado: true };
+                method = 'POST';
+                operation = 1;
+            }
+            else {
+                parameter = { id: id, nombre: nombre.trim(), horaInicio: horaInicio.trim(), horaFin: horaFin.trim(), estado: true };
+                method = 'PUT';
+                operation = 2;
+            }
+
+            sendRequest(method, parameter, operation);
+        }
+
+    }
+
+    const sendRequest = async (method, parameter, operation) => {
+        console.log(operation);
+        if (operation === 1) {
+            console.log('create');
+            await axios({ method: method, url: urlCreateHorario, data: parameter }).then(function (response) {
+                let type = response.data[0];
+                let message = response.data[1];
+                show_alert(type, message);
+                if (type === 'success') {
+                    document.getElementById('btnCerrar').click();
+                    getHorarios();
+                }
+            }).catch(function (error) {
+                show_alert('Error al procesar la solicitud', 'error');
+                console.error(error);
+            });
+        }
+
+        if (operation === 2) {
+            console.log('update');
+            console.info('data:', method, urlPutHorario, parameter);
+            await axios({ method: method, url: urlPutHorario, data: parameter }).then(function (response) {
+                let type = response.data[0];
+                let message = response.data[1];
+                show_alert(type, message);
+                if (type === 'success') {
+                    document.getElementById('btnCerrar').click();
+                    getHorarios();
+                }
+            }).catch(function (error) {
+                show_alert('Error al procesar la solicitud', 'error');
+                console.error(error);
+            });
+        }
+
+    }
+
     return (
         <div className='App'>
             <div className='container-fluid'>
                 <div className='row mt-3'>
                     <div className='col-md-4 offset-md-4'>
                         <div className='d-grid mx-auto'>
-                            <button onClick={() => openModal(1) } className='btn btn-dark' data-bs-toggle='modal' data-bs-target='#modalHorarios'>
+                            <button onClick={() => openModal(1)} className='btn btn-dark' data-bs-toggle='modal' data-bs-target='#modalHorarios'>
                                 <i className='fa-solid fa-circle-plus'></i>Agregar Horario
                             </button>
                         </div>
@@ -99,9 +172,8 @@ const PerfilEstudiante = () => {
                                                 <td>{horario.horaFin}</td>
                                                 <td>{horario.estado}</td>
                                                 <td>
-                                                    <button onClick={() => openModal(2, horario.id, horario.nombre,
-                                                        horario.horaInicio, horario.horaFin, horario.estado)}
-                                                        className='btn btn-warning'>
+                                                    <button onClick={() => openModal(2, horario.id, horario.nombre, horario.horaInicio, horario.horaFin, horario.estado)}
+                                                        className='btn btn-warning' data-bs-toggle='modal' data-bs-target='#modalHorarios'>
                                                         <i className='fa-solid fa-edit'></i>
                                                     </button>
                                                     &nbsp;
@@ -123,31 +195,31 @@ const PerfilEstudiante = () => {
                 <div className='modal-dialog'>
                     <div className='modal-content'>
                         <div className='modal-header'>
-                            <label className='h5'>{nombre}</label>
+                            <label className='h5'>{title}</label>
                             <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='close'></button>
                         </div>
                         <div className='modal-body'>
                             <input type='hidden' id='id'></input>
                             <div className='input-group mb-3'>
-                                <span className='input-group-text'><i className='fa-solid fa-gift'></i></span>
+                                <span className='input-group-text'><i className='fa-solid fa-comment'></i></span>
                                 <input type='text' id='nombre' className='form-control'
                                     placeholder='Nombre' value={nombre} onChange={(e) => setNombre(e.target.value)}>
                                 </input>
                             </div>
                             <div className='input-group mb-3'>
-                                <span className='input-group-text'><i className='fa-solid fa-gift'></i></span>
+                                <span className='input-group-text'><i className='fa-solid fa-calendar'></i></span>
                                 <input type='text' id='horaInicio' className='form-control'
                                     placeholder='Hora de Inicio' value={horaInicio} onChange={(e) => setHoraInicio(e.target.value)}>
                                 </input>
                             </div>
                             <div className='input-group mb-3'>
-                                <span className='input-group-text'><i className='fa-solid fa-gift'></i></span>
+                                <span className='input-group-text'><i className='fa-solid fa-calendar'></i></span>
                                 <input type='text' id='horaFin' className='form-control'
                                     placeholder='Hora de Fin' value={horaFin} onChange={(e) => setHoraFin(e.target.value)}>
                                 </input>
                             </div>
                             <div className='input-group mb-3'>
-                                <span className='input-group-text'><i className='fa-solid fa-gift'></i></span>
+                                <span className='input-group-text'><i className='fa-solid fa-plus'></i></span>
                                 <select className='form-control' placeholder='Estado'
                                     id='estado' onChange={(e) => setEstado(e.target.value)}>
                                     <option value={true}>Activo</option>
@@ -155,13 +227,13 @@ const PerfilEstudiante = () => {
                                 </select>
                             </div>
                             <div className='d-grid col-6 mx-auto'>
-                                <button className='btn btn-success'>
+                                <button onClick={() => validarForm()} className='btn btn-success'>
                                     <i className='fa-solid fa-floppy-disk'></i> Guardar
                                 </button>
                             </div>
                         </div>
                         <div className='modal-footer'>
-                            <button type='button' className='btn btn-secondary' data-bs-dismiss='modal'>Cerrar</button>
+                            <button id='btnCerrar' type='button' className='btn btn-secondary' data-bs-dismiss='modal'>Cerrar</button>
                         </div>
                     </div>
                 </div>

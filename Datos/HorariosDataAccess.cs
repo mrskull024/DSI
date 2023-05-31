@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Data.SqlClient;
 using Dapper;
 using Datos.Common;
 using Modelos.Horarios;
@@ -13,7 +14,9 @@ namespace Datos.HorariosDataAccess
 
         public Horario GetHorarios(HorariosGet_Req param)
         {
-            using (var sqlConn = ObtenerConexion())
+            SqlConnection conn = ObtenerConexion();
+            conn.Open();
+            using (var sqlConn = conn)
             {
                 var query = sqlConn.Query<Horario>(Params.instance.spGetHorarios,
                     new
@@ -23,11 +26,14 @@ namespace Datos.HorariosDataAccess
                     null, true, null, CommandType.StoredProcedure);
                 return query.FirstOrDefault();
             }
+            
         }
 
         public List<Horario> HorariosList(HorariosList_Req param)
         {
-            using (var sqlConn = ObtenerConexion())
+            SqlConnection conn = ObtenerConexion();
+            conn.Open();
+            using (var sqlConn = conn)
             {
                 var query = sqlConn.Query<Horario>(Params.instance.spHorariosList,
                     new
@@ -41,7 +47,9 @@ namespace Datos.HorariosDataAccess
 
         public Horario CreateHorarios(Horarios_Req param)
         {
-            using (var sqlConn = ObtenerConexion())
+            SqlConnection conn = ObtenerConexion();
+            conn.Open();
+            using (var sqlConn = conn)
             {
                 var query = sqlConn.Query<Horario>(Params.instance.spCreateHorarios,
                     new
@@ -58,7 +66,9 @@ namespace Datos.HorariosDataAccess
 
         public Horario UpdateHorarios(Horarios_Req param)
         {
-            using (var sqlConn = ObtenerConexion())
+            SqlConnection conn = ObtenerConexion();
+            conn.Open();
+            using (var sqlConn = conn)
             {
                 var query = sqlConn.Query<Horario>(Params.instance.spUpdateHorarios,
                     new
