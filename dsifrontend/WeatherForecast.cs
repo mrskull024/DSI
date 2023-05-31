@@ -1,4 +1,4 @@
-namespace promecysfrontend
+namespace dsifrontend
 {
     public class WeatherForecast
     {

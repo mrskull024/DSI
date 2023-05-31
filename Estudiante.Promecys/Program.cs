@@ -24,6 +24,17 @@ builder.Services.AddSwaggerGen(c =>
 //inyeccion de dependencias de las interfaces
 builder.Services.AddDSI_DLL();
 
+//permiso de cors 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("DSIPolicy", app =>
+    {
+        app.AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowAnyOrigin();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -35,6 +46,9 @@ app.UseSwaggerUI(c =>
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "DSI WebApi");
 });
 //}
+
+//damos permiso ala politica de cors
+app.UseCors("DSIPolicy");
 
 app.UseHttpsRedirection();
 

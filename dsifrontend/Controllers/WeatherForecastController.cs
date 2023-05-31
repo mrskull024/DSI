@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace promecysfrontend.Controllers
+namespace dsifrontend.Controllers
 {
     [ApiController]
     [Route("[controller]")]
