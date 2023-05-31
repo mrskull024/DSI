@@ -95,10 +95,13 @@ const PerfilEstudiante = () => {
         if (operation === 1) {
             console.log('create');
             await axios({ method: method, url: urlCreateHorario, data: parameter }).then(function (response) {
-                let type = response.data[0];
-                let message = response.data[1];
+                let type = response.status;
+                let message = 'Horario creado exitosamente';
+
+                show_alert(message, 'info');
+
                 show_alert(type, message);
-                if (type === 'success') {
+                if (type === 200) {
                     document.getElementById('btnCerrar').click();
                     getHorarios();
                 }
@@ -112,10 +115,12 @@ const PerfilEstudiante = () => {
             console.log('update');
             console.info('data:', method, urlPutHorario, parameter);
             await axios({ method: method, url: urlPutHorario, data: parameter }).then(function (response) {
-                let type = response.data[0];
-                let message = response.data[1];
-                show_alert(type, message);
-                if (type === 'success') {
+                let type = response.status;
+                let message = 'Horario actualizado exitosamente';
+
+                show_alert(message, 'info');
+
+                if (type === 200) {
                     document.getElementById('btnCerrar').click();
                     getHorarios();
                 }
