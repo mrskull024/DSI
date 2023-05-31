@@ -24,7 +24,7 @@ namespace Promecys.API.Controllers
         [HttpGet("GetHorario")]
         public IActionResult ObtenerHorario(HorariosGet_Req param)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var method = _horarios.ObtenerHorario(param);
 
@@ -54,7 +54,7 @@ namespace Promecys.API.Controllers
                     return Ok(method);
                 }
             }
-          
+
             return BadRequest(ModelState);
         }
 
@@ -66,7 +66,7 @@ namespace Promecys.API.Controllers
         [HttpPost("CreateHorario")]
         public IActionResult CreateHorario([FromBody] Horarios_Req param)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var method = _horarios.CrearHorario(param);
 
@@ -89,7 +89,6 @@ namespace Promecys.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                //return Ok(_horarios.ActualizarHorario(param));
                 var method = _horarios.ActualizarHorario(param);
 
                 if (method != null)

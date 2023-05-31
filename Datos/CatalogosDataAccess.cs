@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Data.SqlClient;
 using Dapper;
 using Datos.Common;
 using Modelos.Catalogos;
@@ -13,7 +14,9 @@ namespace Datos.CatalogosDataAccess
 
         public List<EstadoCivil> EstadoCivilList(EstadoCivilList_Req param)
         {
-            using (var sqlConn = ObtenerConexion())
+            SqlConnection conn = ObtenerConexion();
+            conn.Open();
+            using (var sqlConn = conn)
             {
                 var query = sqlConn.Query<EstadoCivil>(Params.instance.spEstadoCivilList,
                     new
@@ -27,7 +30,9 @@ namespace Datos.CatalogosDataAccess
 
         public List<Departamentos> DepartamentosList(DepartamentosList_Req param)
         {
-            using (var sqlConn = ObtenerConexion())
+            SqlConnection conn = ObtenerConexion();
+            conn.Open();
+            using (var sqlConn = conn)
             {
                 var query = sqlConn.Query<Departamentos>(Params.instance.spDepartamentosList,
                     new
@@ -41,7 +46,9 @@ namespace Datos.CatalogosDataAccess
 
         public List<Municipios> MunicipiosList(MunicipiosList_Req param)
         {
-            using (var sqlConn = ObtenerConexion())
+            SqlConnection conn = ObtenerConexion();
+            conn.Open();
+            using (var sqlConn = conn)
             {
                 var query = sqlConn.Query<Municipios>(Params.instance.spMunicipiosList,
                     new
@@ -55,7 +62,9 @@ namespace Datos.CatalogosDataAccess
 
         public List<EstadoLaboral> EstadoLaboralList(EstadoLaboralList_Req param)
         {
-            using (var sqlConn = ObtenerConexion())
+            SqlConnection conn = ObtenerConexion();
+            conn.Open();
+            using (var sqlConn = conn)
             {
                 var query = sqlConn.Query<EstadoLaboral>(Params.instance.spEstadoLaboralList,
                     new
@@ -69,7 +78,9 @@ namespace Datos.CatalogosDataAccess
 
         public List<Generos> GenerosList(GenerosList_Req param)
         {
-            using (var sqlConn = ObtenerConexion())
+            SqlConnection conn = ObtenerConexion();
+            conn.Open();
+            using (var sqlConn = conn)
             {
                 var query = sqlConn.Query<Generos>(Params.instance.spGenerosList,
                     new
@@ -83,7 +94,9 @@ namespace Datos.CatalogosDataAccess
 
         public List<TipoEstudiante> TipoEstudianteList(TipoEstudianteList_Req param)
         {
-            using (var sqlConn = ObtenerConexion())
+            SqlConnection conn = ObtenerConexion();
+            conn.Open();
+            using (var sqlConn = conn)
             {
                 var query = sqlConn.Query<TipoEstudiante>(Params.instance.spTipoEstudianteList,
                     new
@@ -97,7 +110,9 @@ namespace Datos.CatalogosDataAccess
 
         public List<Escuelas> EscuelasList(EscuelasList_Req param)
         {
-            using (var sqlConn = ObtenerConexion())
+            SqlConnection conn = ObtenerConexion();
+            conn.Open();
+            using (var sqlConn = conn)
             {
                 var query = sqlConn.Query<Escuelas>(Params.instance.spEscuelasList,
                     new

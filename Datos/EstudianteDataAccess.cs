@@ -14,7 +14,9 @@ namespace Datos.EstudianteDataAccess
 
         public Estudiante EstudianteGet(EstudianteGet_Req param)
         {
-            using (var sqlConn = ObtenerConexion())
+            SqlConnection conn = ObtenerConexion();
+            conn.Open();
+            using (var sqlConn = conn)
             {
                 var query = sqlConn.Query<Estudiante>(Params.instance.spGetEstudiante,
                     new
@@ -28,7 +30,9 @@ namespace Datos.EstudianteDataAccess
 
         public List<Estudiante> EstudianteList(EstudianteList_Req param)
         {
-            using (var sqlConn = ObtenerConexion())
+            SqlConnection conn = ObtenerConexion();
+            conn.Open();
+            using (var sqlConn = conn)
             {
                 var query = sqlConn.Query<Estudiante>(Params.instance.spEstudianteList,
                     new
@@ -42,7 +46,9 @@ namespace Datos.EstudianteDataAccess
 
         public Estudiante EstudianteCreate(Estudiante_Req param)
         {
-            using (var sqlConn = ObtenerConexion())
+            SqlConnection conn = ObtenerConexion();
+            conn.Open();
+            using (var sqlConn = conn)
             {
                 var query = sqlConn.Query<Estudiante>(Params.instance.spCreateEstudiante,
                     new
@@ -76,7 +82,9 @@ namespace Datos.EstudianteDataAccess
 
         public Estudiante EstudianteUpdate(Estudiante_Req param)
         {
-            using (var sqlConn = ObtenerConexion())
+            SqlConnection conn = ObtenerConexion();
+            conn.Open();
+            using (var sqlConn = conn)
             {
                 var query = sqlConn.Query<Estudiante>(Params.instance.spUpdateEstudiante,
                     new

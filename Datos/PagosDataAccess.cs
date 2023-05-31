@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Data.SqlClient;
 using Dapper;
 using Datos.Common;
 using Modelos.Pagos;
@@ -13,7 +14,9 @@ namespace Datos.PagosDataAccess
 
         public List<Pago> PagosList(PagosList_Req param)
         {
-            using (var sqlConn = ObtenerConexion())
+            SqlConnection conn = ObtenerConexion();
+            conn.Open();
+            using (var sqlConn = conn)
             {
                 var query = sqlConn.Query<Pago>(Params.instance.spObtenerPagosPorEstudiante,
                     new
