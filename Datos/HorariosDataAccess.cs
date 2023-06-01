@@ -83,5 +83,21 @@ namespace Datos.HorariosDataAccess
                 return query.FirstOrDefault();
             }
         }
+
+        public Horario DeleteHorarios(Horarios_Req param)
+        {
+            SqlConnection conn = ObtenerConexion();
+            conn.Open();
+            using (var sqlConn = conn)
+            {
+                var query = sqlConn.Query<Horario>(Params.instance.spDeleteHorarios,
+                    new
+                    {
+                        param.id
+                    },
+                    null, true, null, CommandType.StoredProcedure);
+                return query.FirstOrDefault();
+            }
+        }
     }
 }

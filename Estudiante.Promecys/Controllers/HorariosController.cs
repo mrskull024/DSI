@@ -99,5 +99,26 @@ namespace Promecys.API.Controllers
 
             return BadRequest(ModelState);
         }
+
+        /// <summary>
+        /// Da de baja un horario de clases (cambia el estado logico)
+        /// </summary>
+        /// <param name="param">Parámetros para dar decbaja un horario de clases</param>
+        /// <returns><see cref="Horario"/></returns>
+        [HttpPut("DeleteHorario")]
+        public IActionResult DeleteHorario([FromBody] Horarios_Req param)
+        {
+            if (ModelState.IsValid)
+            {
+                var method = _horarios.BajaHorario(param);
+
+                if (method != null)
+                {
+                    return Ok(method);
+                }
+            }
+
+            return BadRequest(ModelState);
+        }
     }
 }

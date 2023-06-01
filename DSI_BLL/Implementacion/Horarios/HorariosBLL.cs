@@ -22,6 +22,11 @@ namespace DSI_BLL.Implementacion.Horarios
             return data.UpdateHorarios(req);
         }
 
+        public Horario BajaHorario(Horarios_Req req)
+        {
+            return data.DeleteHorarios(req);
+        }
+
         public Horario CrearHorario(Horarios_Req req)
         {
             return data.CreateHorarios(req);

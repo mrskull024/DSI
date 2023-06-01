@@ -22,6 +22,7 @@
         public string spUpdateHorarios => "[DSI].[uspUpdateHorarios]";
         public string spCreateHorarios => "[DSI].[uspCreateHorarios]";
         public string spGetHorarios => "[DSI].[uspGetHorarios]";
+        public string spDeleteHorarios => "[DSI].[uspDeleteHorarios]";
         #endregion
 
         #region SP_Pagos
