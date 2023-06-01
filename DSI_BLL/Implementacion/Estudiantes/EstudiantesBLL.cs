@@ -32,9 +32,9 @@ namespace DSI_BLL.Implementacion.Estudiantes
             return data.EstudianteList(req);
         }
 
-        public Estudiante ObtenerEstudiante(EstudianteGet_Req req)
+        public Estudiante ObtenerEstudiante(string numeroCarnet)
         {
-            return data.EstudianteGet(req);
+            return data.EstudianteGet(numeroCarnet);
         }
     }
 }

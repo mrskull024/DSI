@@ -1,291 +1,274 @@
 import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 import axios from 'axios';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
-import { show_alert } from '../functions';
 
 const PerfilEstudiante = () => {
     //necesario para el api
-    const urlHorarios = "http://macadmin-001-site1.gtempurl.com/api/Horarios/ListHorarios";
-    const urlCreateHorario = "http://macadmin-001-site1.gtempurl.com/api/Horarios/CreateHorario";
-    const urlPutHorario = "http://macadmin-001-site1.gtempurl.com/api/Horarios/UpdateHorario";
-    const urlDeleteHorario = "http://macadmin-001-site1.gtempurl.com/api/Horarios/DeleteHorario";
     const headers = { 'Content-Type': 'application/json' };
-    const request = { incluirInactivos: true };
+    const request = { incluirDesactivados: true };
+    const urlEstudiante = "http://macadmin-001-site1.gtempurl.com/api/Estudiante/GetEstudiante?numeroCarnet=2017-0505A";
+    const urlGeneros = "http://macadmin-001-site1.gtempurl.com/api/Catalogos/ListarGeneros";
+    const urlEstadosCiviles = "http://macadmin-001-site1.gtempurl.com/api/Catalogos/ListarEstadoCivil";
+    const urlColegios = "http://macadmin-001-site1.gtempurl.com/api/Catalogos/ListarEscuelas";
+    const urlEstadoLaboral = "http://macadmin-001-site1.gtempurl.com/api/Catalogos/ListarEstadoLaboral";
+    const urlDepartamentos = "http://macadmin-001-site1.gtempurl.com/api/Catalogos/ListarDepartamentos";
+    const urlMunicipios = "http://macadmin-001-site1.gtempurl.com/api/Catalogos/ListarMunicipios";
+    const urlTiposEstudiante = "http://macadmin-001-site1.gtempurl.com/api/Catalogos/ListarTipoEstudiante";
 
-    const [horarios, setHorarios] = useState([]);
-    const [id, setId] = useState(0);
-    const [nombre, setNombre] = useState('');
-    const [horaInicio, setHoraInicio] = useState('');
-    const [horaFin, setHoraFin] = useState('');
-    const [estado, setEstado] = useState(false);
-    const [operation, setOperation] = useState(1);
-    const [title, setTitle] = useState('');
+    const [estudiante, setEstudiante] = useState([]);
+    const [generos, setGeneros] = useState([]);
+    const [estadosCiviles, setEstadosCiviles] = useState([]);
+    const [colegiosSecundaria, setColegiosSecundaria] = useState([]);
+    const [estadosLaborales, setEstadosLaborales] = useState([]);
+    const [departamentos, setDepartamentos] = useState([]);
+    const [municipios, setMunicipios] = useState([]);
+    const [tiposEstudiantes, setTiposEstudiante] = useState([]); 
+
+    //informacion personal
+    const [primerNombre, setPrimerNombre] = useState('');
+    const [segundoNombre, setSegundoNombre] = useState('');
+    const [primerApellido, setPrimerApellido] = useState('');
+    const [segundoApellido, setSegundoApellido] = useState('');
+    const [numeroIdentificacion, setNumeroIdentificacion] = useState('');
+    const [numeroCarnet, setNumeroCarnet] = useState('');
+    const [fechaNacimiento, setFechaNacimiento] = useState('');
+    const [edad, setEdad] = useState(0);
+    const [genero, setGenero] = useState(0);
+    const [estadoCivil, setEstadoCivil] = useState(0);
+    //informacion de contacto
+    const [celular, setCelular] = useState('');
+    const [numeroTelefonico, setNumeroTelefonico] = useState('');
+    const [correo, setCorreo] = useState('');
+    const [fechaIngreso, setFechaIngreso] = useState('');
+    const [direccion, setDireccion] = useState('');
+    //informacion adicional
+    const [secundaria, setSecundaria] = useState(0);
+    const [estadoLaboral, setEstadoLaboral] = useState(0);
+    const [tipoEstudiante, setTipoEstudiante] = useState(0);
+    const [departamento, setDepartamento] = useState(0);
+    const [municipio, setMunicipio] = useState(0);
+
 
     useEffect(() => {
-        getHorarios();
+        getEstudiante();
+        getGeneros();
+        getEstadosCiviles();
+        getEscuelas();
+        getEstadosLaborales();
+        getDepartamentos();
+        getMunicipios();
+        getTiposEstudiante();
     }, []);
 
-    const getHorarios = async () => {
-        const apiResponse = await axios.post(urlHorarios, request, headers);
-        console.log(apiResponse.data);
-        setHorarios(apiResponse.data)
-    }
-
-    const openModal = (opcion, id, nombre, horaInicio, horaFin, estado) => {
-        setId(0);
-        setNombre('');
-        setHoraInicio('');
-        setHoraFin('');
-        setEstado(false);
-        setOperation(opcion);
-        console.info('opcion modal', opcion);
-
-        if (opcion === 1) {
-            //console.info('Legue a opcion1');
-            setTitle('Agregar Horario');
-
-        }
-        else if (opcion === 2) {
-            //console.info('Legue a opcion2', 'params:', id, nombre, horaInicio, horaFin, estado);
-            setTitle('Editar Horario');
-            setId(id);
-            setNombre(nombre);
-            setHoraInicio(horaInicio);
-            setHoraFin(horaFin);
-            setEstado(estado);
-        }
-
-        window.setTimeout(function () {
-            document.getElementById('nombre').focus();
-        }, 500);
-    }
-
-    const validarForm = () => {
-        let parameter;
-        let method;
-        let op;
-
-        if (nombre.trim() === '') {
-            show_alert('Digital el nombre del horario', 'warning');
-        }
-        else if (horaInicio.trim() === '') {
-            show_alert('Digital la hora de inicio del horario', 'warning');
-        }
-        else if (horaFin.trim() === '') {
-            show_alert('Digital la hora de finalizacion del horario', 'warning');
-        }
-        else {
-            if (operation === 1) {
-                parameter = { nombre: nombre.trim(), horaInicio: horaInicio.trim(), horaFin: horaFin.trim(), estado: true };
-                method = 'POST';
-                op = 1;
-            }
-            else {
-                parameter = { id: id, nombre: nombre.trim(), horaInicio: horaInicio.trim(), horaFin: horaFin.trim(), estado: true };
-                method = 'PUT';
-                op = 2;
-            }
-
-            console.info('parametros a enviar: ', method, parameter, op);
-            sendRequest(method, parameter, op);
-        }
-
-    }
-
-    const sendRequest = async (method, parameter, operation) => {
-        console.log(operation);
-        if (operation === 1) {
-            console.log('create');
-            await axios({ method: method, url: urlCreateHorario, data: parameter }).then(function (response) {
-                let type = response.status;
-                let message = 'Horario creado exitosamente';
-
-                show_alert(message, 'info');
-
-                if (type === 200) {
-                    document.getElementById('btnCerrar').click();
-                    getHorarios();
-                }
-            }).catch(function (error) {
-                show_alert('Error al procesar la solicitud', 'error');
-                console.error(error);
+    const getEstudiante = async () => {
+        await axios
+            .get(urlEstudiante)
+            .then(function (response) {
+                console.log('estudiante=', response.data);
+                setEstudiante(response.data);
+                setPrimerNombre(response.data.primerNombre);
+                setSegundoNombre(response.data.segundoNombre);
+                setPrimerApellido(response.data.primerApellido);
+                setSegundoApellido(response.data.segundoApellido);
+                setNumeroIdentificacion(response.data.numeroIdentificacion);
+                setNumeroCarnet(response.data.numeroCarnet);
+                setFechaNacimiento(response.data.fechaNacimiento);
+                setEdad(response.data.edad);
+                setGenero(response.data.genero);
+                setEstadoCivil(response.data.estadoCivil);
+                setCelular(response.data.celular);
+                setNumeroTelefonico(response.data.numeroTelefonico);
+                setCorreo(response.data.correo);
+                setDireccion(response.data.direccion);
+                setFechaIngreso(response.data.fechaIngreso);
+                setSecundaria(response.data.secundaria);
+                setEstadoLaboral(response.data.correo);
+                setTipoEstudiante(response.data.tipoEstudiante);
+                setDepartamento(response.data.departamento);
+                setMunicipio(response.data.municipio);
             });
-        }
-
-        if (operation === 2) {
-            console.log('update');
-            console.info('data:', method, urlPutHorario, parameter);
-            await axios({ method: method, url: urlPutHorario, data: parameter }).then(function (response) {
-                let type = response.status;
-                let message = 'Horario actualizado exitosamente';
-
-                show_alert(message, 'info');
-
-                if (type === 200) {
-                    document.getElementById('btnCerrar').click();
-                    getHorarios();
-                }
-            }).catch(function (error) {
-                show_alert('Error al procesar la solicitud', 'error');
-                console.error(error);
-            });
-        }
-
-        if (operation === 3) {
-            console.log('delete');
-            console.info('data:', method, urlDeleteHorario, parameter);
-            await axios({ method: method, url: urlDeleteHorario, data: parameter }).then(function (response) {
-                let type = response.status;
-                let message = 'Horario dado de baja exitosamente';
-
-                show_alert(message, 'info');
-
-                if (type === 200) {
-                    document.getElementById('btnCerrar').click();
-                    getHorarios();
-                }
-            }).catch(function (error) {
-                show_alert('Error al procesar la solicitud', 'error');
-                console.error(error);
-            });
-        }
-
     }
 
-    const deleteProduct = (id, nombre, horaInicio, horaFin, estado) => {
-        const MySwal = withReactContent(Swal);
-        MySwal.fire({
-            title: 'Esta seuguro de eliminar el horario: ' + nombre + ' ?',
-            icon: 'question',
-            text: 'el cambio es irreversible',
-            showCancelButton: true,
-            confirmButtonText: 'Si, Eliminar',
-            cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                setId(id);
-                let method = 'PUT';
-                sendRequest(method, { id: id, nombre: nombre, horaInicio: horaInicio, horaFin: horaFin, estado: estado }, 3);
-            }
-            else {
-                show_alert('El horario no se dio de baja', 'info');
-            }
-        });
+    const getGeneros = async () => {
+        const apiResponse = await axios.post(urlGeneros, request, headers);
+        console.log('generos=', apiResponse.data);
+        setGeneros(apiResponse.data)
+    }
+
+    const getEstadosCiviles = async () => {
+        const apiResponse = await axios.post(urlEstadosCiviles, request, headers);
+        console.log('estados civiles=', apiResponse.data);
+        setEstadosCiviles(apiResponse.data)
+    }
+
+    const getEscuelas = async () => {
+        const apiResponse = await axios.post(urlColegios, request, headers);
+        console.log('colegios=', apiResponse.data);
+        setColegiosSecundaria(apiResponse.data)
+    }
+
+    const getEstadosLaborales = async () => {
+        const apiResponse = await axios.post(urlEstadoLaboral, request, headers);
+        console.log('estados laborales=', apiResponse.data);
+        setEstadosLaborales(apiResponse.data)
+    }
+
+    const getDepartamentos = async () => {
+        const apiResponse = await axios.post(urlDepartamentos, request, headers);
+        console.log('departamentos=', apiResponse.data);
+        setDepartamentos(apiResponse.data)
+    }
+
+    const getMunicipios = async () => {
+        const apiResponse = await axios.post(urlMunicipios, request, headers);
+        console.log('municipios=', apiResponse.data);
+        setMunicipios(apiResponse.data)
+    }
+
+    const getTiposEstudiante = async () => {
+        const apiResponse = await axios.post(urlTiposEstudiante, request, headers);
+        console.log('tipo Estudiante=', apiResponse.data);
+        setTiposEstudiante(apiResponse.data)
     }
 
     return (
         <div className='App'>
-            <div className='container-fluid'>
-                <div className='row mt-3'>
-                    <div className='col-md-4 offset-md-4'>
-                        <div className='d-grid mx-auto'>
-                            <button onClick={() => openModal(1)} className='btn btn-dark' data-bs-toggle='modal' data-bs-target='#modalHorarios'>
-                                <i className='fa-solid fa-circle-plus'></i>Agregar Horario
-                            </button>
-                        </div>
+            <form id='formEstudiante'>
+                <div className='row'>
+                    <h3 className='form-label'>Informacion Personal de: {primerNombre + ' ' + segundoNombre + ' ' + primerApellido + ' ' + segundoApellido}</h3>
+                    <div className='col-6'>
+                        <label className='form-label'>Primer Nombre</label>
+                        <input type='text' className='form-control' name='pNombre' value={primerNombre} disabled>
+                        </input>
                     </div>
-                </div>
-                <div className='row mt-3'>
-                    <div className='col-12 col-lg-8 offset-0 offset-lg-2'>
-                        <div className='table responsive'>
-                            <table className='table table-bordered'>
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            #
-                                        </th>
-                                        <th>
-                                            Nombre
-                                        </th>
-                                        <th>
-                                            Hora Inicio
-                                        </th>
-                                        <th>
-                                            Hora Fin
-                                        </th>
-                                        <th>
-                                            Estado
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody className='table-group-divider'>
-                                    {
-                                        horarios.map((horario) => (
-                                            <tr key={horario.id}>
-                                                <td>{horario.id}</td>
-                                                <td>{horario.nombre}</td>
-                                                <td>{horario.horaInicio}</td>
-                                                <td>{horario.horaFin}</td>
-                                                <td>{String(horario.estado)}</td>
-                                                <td>
-                                                    <button onClick={() => openModal(2, horario.id, horario.nombre, horario.horaInicio, horario.horaFin, horario.estado)}
-                                                        className='btn btn-warning' data-bs-toggle='modal' data-bs-target='#modalHorarios'>
-                                                        <i className='fa-solid fa-edit'></i>
-                                                    </button>
-                                                    &nbsp;
-                                                    <button onClick={() => deleteProduct(horario.id, horario.nombre, horario.horaInicio, horario.horaFin, false)}
-                                                        className='btn btn-danger'>
-                                                        <i className='fa-solid fa-trash'></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        ))
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
+                    <div className='col-6'>
+                        <label className='form-label'>Segundo Nombre</label>
+                        <input type='text' className='form-control' name='sNombre' value={segundoNombre} disabled>
+                        </input>
                     </div>
-                </div>
+                    <div className='col-6'>
+                        <label className='form-label'>Primer Apellido</label>
+                        <input type='text' className='form-control' name='pApellido' value={primerApellido} disabled>
+                        </input>
+                    </div>
+                    <div className='col-6'>
+                        <label className='form-label'>Segundo Apellido</label>
+                        <input type='text' className='form-control' name='sApellido' value={segundoApellido} disabled>
+                        </input>
+                    </div>
+                    <div className='col-6'>
+                        <label className='form-label'>Cedula de identidad</label>
+                        <input type='text' className='form-control' name='cedula' value={numeroIdentificacion} disabled>
+                        </input>
+                    </div>
+                    <div className='col-6'>
+                        <label className='form-label'>Numero de carnet</label>
+                        <input type='text' className='form-control' name='carnet' value={numeroCarnet} disabled>
+                        </input>
+                    </div>
+                    <div className='col-6'>
+                        <label className='form-label'>Fecha de Nacimiento</label>
+                        <input type='text' className='form-control' name='fechaNac' value={moment(fechaNacimiento).format('DD-MM-YYYY')} disabled>
+                        </input>
+                    </div>
+                    <div className='col-6'>
+                        <label className='form-label'>Edad</label>
+                        <input type='text' className='form-control' name='edad' value={edad + ' anios'} disabled>
+                        </input>
+                    </div>
+                    <div className='col-6'>
+                        <label className='form-label'>Genero</label>
+                        <select className='form-control' onChange={e => e.target.value} value={genero} disabled>
+                            {
+                                generos.map((generos) => <option key={generos.id}>{generos.descripcion}</option>)
+                            }
+                        </select>
+                    </div>
+                    <div className='col-6'>
+                        <label className='form-label'>Estado Civil</label>
+                        <select className='form-control' onChange={e => e.target.value} value={estadoCivil} disabled>
+                            {
+                                estadosCiviles.map((estadosCiviles) => <option key={estadosCiviles.id}>{estadosCiviles.descripcion}</option>)
+                            }
+                        </select>
+                    </div>
 
-            </div>
-            <div id='modalHorarios' className='modal fade' aria-hidden='true'>
-                <div className='modal-dialog'>
-                    <div className='modal-content'>
-                        <div className='modal-header'>
-                            <label className='h5'>{title}</label>
-                            <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='close'></button>
-                        </div>
-                        <div className='modal-body'>
-                            <input type='hidden' id='id'></input>
-                            <div className='input-group mb-3'>
-                                <span className='input-group-text'><i className='fa-solid fa-comment'></i></span>
-                                <input type='text' id='nombre' className='form-control'
-                                    placeholder='Nombre' value={nombre} onChange={(e) => setNombre(e.target.value)}>
-                                </input>
-                            </div>
-                            <div className='input-group mb-3'>
-                                <span className='input-group-text'><i className='fa-solid fa-calendar'></i></span>
-                                <input type='text' id='horaInicio' className='form-control'
-                                    placeholder='Hora de Inicio' value={horaInicio} onChange={(e) => setHoraInicio(e.target.value)}>
-                                </input>
-                            </div>
-                            <div className='input-group mb-3'>
-                                <span className='input-group-text'><i className='fa-solid fa-calendar'></i></span>
-                                <input type='text' id='horaFin' className='form-control'
-                                    placeholder='Hora de Fin' value={horaFin} onChange={(e) => setHoraFin(e.target.value)}>
-                                </input>
-                            </div>
-                            <div className='input-group mb-3'>
-                                <span className='input-group-text'><i className='fa-solid fa-plus'></i></span>
-                                <select className='form-control' placeholder='Estado'
-                                    id='estado' onChange={(e) => setEstado(e.target.value)}>
-                                    <option value={true}>Activo</option>
-                                    <option value={false}>No Activo</option>
-                                </select>
-                            </div>
-                            <div className='d-grid col-6 mx-auto'>
-                                <button onClick={() => validarForm()} className='btn btn-success'>
-                                    <i className='fa-solid fa-floppy-disk'></i> Guardar
-                                </button>
-                            </div>
-                        </div>
-                        <div className='modal-footer'>
-                            <button id='btnCerrar' type='button' className='btn btn-secondary' data-bs-dismiss='modal'>Cerrar</button>
-                        </div>
+                </div>
+                <br />
+                <div className='row'>
+                    <h3 className='form-label'>Informacion de contacto:</h3>
+                    <div className='col-3'>
+                        <label className='form-label'>Celular</label>
+                        <input type='text' className='form-control' name='celular' value={celular} disabled>
+                        </input>
+                    </div>
+                    <div className='col-3'>
+                        <label className='form-label'>Telefono</label>
+                        <input type='text' className='form-control' name='telefono' value={numeroTelefonico} disabled>
+                        </input>
+                    </div>
+                    <div className='col-3'>
+                        <label className='form-label'>Correo</label>
+                        <input type='text' className='form-control' name='correo' value={correo} disabled>
+                        </input>
+                    </div>
+                    <div className='col-3'>
+                        <label className='form-label'>Fecha de Ingreso</label>
+                        <input type='text' className='form-control' name='fechaIngreso' value={moment(fechaIngreso).format('DD-MM-YYYY')} disabled>
+                        </input>
+                    </div>
+                    <div className='col-6'>
+                        <label className='form-label'>Direccion</label>
+                        <input type='text' className='form-control' name='direccion' value={direccion} disabled>
+                        </input>
                     </div>
                 </div>
-            </div>
+                <br />
+                <div className='row'>
+                    <h3 className='form-label'>Informacion adicional:</h3>
+                    <div className='col-4'>
+                        <label className='form-label'>Tipo colegio secundaria</label>
+                        <select className='form-control' onChange={e => e.target.value} value={secundaria} disabled>
+                            {
+                                colegiosSecundaria.map((colegiosSecundaria) => <option key={colegiosSecundaria.id}>{colegiosSecundaria.descripcion}</option>)
+                            }
+                        </select>
+                    </div>
+                    <div className='col-4'>
+                        <label className='form-label'>Estado Laboral</label>
+                        <select className='form-control' onChange={e => e.target.value} value={estadoLaboral} disabled>
+                            {
+                                estadosLaborales.map((estadosLaborales) => <option key={estadosLaborales.id}>{estadosLaborales.descripcion}</option>)
+                            }
+                        </select>
+                    </div>
+                    <div className='col-4'>
+                        <label className='form-label'>Tipo Estudiante</label>
+                        <select className='form-control' onChange={e => e.target.value} value={tipoEstudiante} disabled>
+                            {
+                                tiposEstudiantes.map((tiposEstudiantes) => <option key={tiposEstudiantes.id}>{tiposEstudiantes.descripcion}</option>)
+                            }
+                        </select>
+                    </div>
+                    <div className='col-4'>
+                        <label className='form-label'>Departamento origen</label>
+                        <select className='form-control' onChange={e => e.target.value} value={departamento} disabled>
+                            {
+                                departamentos.map((departamentos) => <option key={departamentos.id}>{departamentos.departamento}</option>)
+                            }
+                        </select>
+                    </div>
+                    <div className='col-4'>
+                        <label className='form-label'>Municipio</label>
+                        <select className='form-control' onChange={e => e.target.value} value={municipio} disabled>
+                            {
+                                municipios.map((municipios) => <option key={municipios.id}>{municipios.municipio}</option>)
+                            }
+                        </select>
+                    </div>
+                </div>
+                <br />
+            </form>
         </div>
     )
 }

@@ -12,7 +12,7 @@ namespace Datos.EstudianteDataAccess
         {
         }
 
-        public Estudiante EstudianteGet(EstudianteGet_Req param)
+        public Estudiante EstudianteGet(string numeroCarnet)
         {
             SqlConnection conn = ObtenerConexion();
             conn.Open();
@@ -21,7 +21,7 @@ namespace Datos.EstudianteDataAccess
                 var query = sqlConn.Query<Estudiante>(Params.instance.spGetEstudiante,
                     new
                     {
-                        param.numeroCarnet
+                        numeroCarnet
                     },
                     null, true, null, CommandType.StoredProcedure);
                 return query.FirstOrDefault();

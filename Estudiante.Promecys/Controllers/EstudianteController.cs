@@ -18,14 +18,14 @@ namespace Promecys.API.Controllers
         /// <summary>
         /// Retorna los registros asociados a un estudiante de promecys
         /// </summary>
-        /// <param name="param">Parámetro para obtener los datos de un estudiante</param>
+        /// <param name="numeroCarnet">Parámetro para obtener los datos de un estudiante</param>
         /// <returns><see cref="Estudiante"/></returns>
         [HttpGet("GetEstudiante")]
-        public IActionResult ObtenerEstudiante(EstudianteGet_Req param)
+        public IActionResult ObtenerEstudiante(string numeroCarnet)
         {
             if (ModelState.IsValid)
             {
-                var method = _estudiantes.ObtenerEstudiante(param);
+                var method = _estudiantes.ObtenerEstudiante(numeroCarnet);
 
                 if (method != null)
                 {
@@ -33,7 +33,7 @@ namespace Promecys.API.Controllers
                 }
             }
 
-            return NotFound("El registro con el id especificado no existe");
+            return NotFound("El estudiante con el numero de carnet especificado no existe");
         }
 
         /// <summary>

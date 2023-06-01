@@ -37,9 +37,9 @@ namespace DSI_BLL.Implementacion.Horarios
             return data.HorariosList(req);
         }
 
-        public Horario ObtenerHorario(HorariosGet_Req req)
+        public Horario ObtenerHorario(int id)
         {
-            return data.GetHorarios(req);
+            return data.GetHorarios(id);
         }
     }
 }

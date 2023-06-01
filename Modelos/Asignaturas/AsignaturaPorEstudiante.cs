@@ -9,5 +9,6 @@
         public string descripcionAsignatura { get; set; }
         public string numeroCarnet { get; set; }
         public string nombreEstudiante { get; set; }
+        public int nota { get; set; }
     }
 }

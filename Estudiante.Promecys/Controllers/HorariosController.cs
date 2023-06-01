@@ -22,11 +22,11 @@ namespace Promecys.API.Controllers
         /// <param name="param">Parámetro para obtener los datos de un horario</param>
         /// <returns><see cref="Horario"/></returns>
         [HttpGet("GetHorario")]
-        public IActionResult ObtenerHorario(HorariosGet_Req param)
+        public IActionResult ObtenerHorario(int id)
         {
             if (ModelState.IsValid)
             {
-                var method = _horarios.ObtenerHorario(param);
+                var method = _horarios.ObtenerHorario(id);
 
                 if (method != null)
                 {

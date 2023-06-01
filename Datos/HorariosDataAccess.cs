@@ -12,7 +12,7 @@ namespace Datos.HorariosDataAccess
         {
         }
 
-        public Horario GetHorarios(HorariosGet_Req param)
+        public Horario GetHorarios(int id)
         {
             SqlConnection conn = ObtenerConexion();
             conn.Open();
@@ -21,12 +21,12 @@ namespace Datos.HorariosDataAccess
                 var query = sqlConn.Query<Horario>(Params.instance.spGetHorarios,
                     new
                     {
-                        param.id
+                        id
                     },
                     null, true, null, CommandType.StoredProcedure);
                 return query.FirstOrDefault();
             }
-            
+
         }
 
         public List<Horario> HorariosList(HorariosList_Req param)

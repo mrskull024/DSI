@@ -1,8 +1,10 @@
-import { Counter } from "./components/Counter";
-import { FetchData } from "./components/FetchData";
+//import { Counter } from "./components/Counter";
+//import { FetchData } from "./components/FetchData";
 import { Home } from "./components/Home";
 import PerfilEstudiante from './components/PerfilEstudiante';
 import Horario from './components/Horario';
+import Pagos from './components/Pagos';
+import AsignaturasPorEstudiante from './components/AsignaturasPorEstudiante';
 
 const AppRoutes = [
     {
@@ -14,8 +16,12 @@ const AppRoutes = [
         element: <PerfilEstudiante />
     },
     {
-        path: '/counter',
-        element: <Counter />
+        path: '/asignaturas',
+        element: <AsignaturasPorEstudiante />
+    },
+    {
+        path: '/pagos',
+        element: <Pagos />
     },
     {
         path: '/horario',
