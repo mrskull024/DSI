@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { show_alert } from '../functions';
 
-const PerfilEstudiante = () => {
+const Horario = () => {
     //necesario para el api
     const urlHorarios = "http://macadmin-001-site1.gtempurl.com/api/Horarios/ListHorarios";
     const urlCreateHorario = "http://macadmin-001-site1.gtempurl.com/api/Horarios/CreateHorario";
@@ -290,4 +290,4 @@ const PerfilEstudiante = () => {
     )
 }
 
-export default PerfilEstudiante;
+export default Horario;
