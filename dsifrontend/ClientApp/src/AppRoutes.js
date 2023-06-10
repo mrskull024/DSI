@@ -24,7 +24,7 @@ const AppRoutes = [
         element: <Horario />
     },
     {
-        path: '/listaestudiantes',
+        path: '/lista',
         element: <ListaEstudiantes />
     },
     {
